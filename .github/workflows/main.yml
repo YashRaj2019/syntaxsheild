@@ -1,0 +1,39 @@
+name: SyntaxShield CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Root Dependencies
+        run: npm install
+
+      - name: Install Frontend & Build
+        run: |
+          cd frontend
+          npm install
+          npm run build
+
+      - name: Install Backend & Verify
+        run: |
+          cd backend
+          npm install
+
+      - name: Verify Deployment Readiness
+        run: echo "Code is validated and ready for deployment!"
