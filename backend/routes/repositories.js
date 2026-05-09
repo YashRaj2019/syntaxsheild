@@ -108,7 +108,7 @@ router.post('/import', protect, async (req, res) => {
 
   } catch (error) {
     console.error('Error importing repository:', error.message);
-    res.status(500).send('Server Error');
+    res.status(500).json({ msg: error.message || 'Server Error' });
   }
 });
 
