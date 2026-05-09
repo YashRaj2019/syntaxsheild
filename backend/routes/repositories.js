@@ -49,7 +49,7 @@ router.post('/import', protect, async (req, res) => {
     });
 
     // Create Webhook on GitHub
-    const webhookUrl = `${process.env.PUBLIC_URL || 'http://localhost:5000'}/api/webhooks/github`;
+    const webhookUrl = `${process.env.PUBLIC_URL || 'http://localhost:8080'}/api/webhooks/github`;
     
     // Note: To test webhooks locally, PUBLIC_URL should be an ngrok url.
     let webhookId = null;

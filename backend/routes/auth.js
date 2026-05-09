@@ -62,10 +62,12 @@ router.get('/github/callback', async (req, res) => {
     });
 
     // Redirect to frontend with token
-    res.redirect(`http://localhost:5173/auth/success?token=${token}`);
+    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+    res.redirect(`${frontendUrl}/auth/success?token=${token}`);
   } catch (error) {
     console.error('OAuth Error:', error.message);
-    res.redirect('http://localhost:5173/auth/error');
+    const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+    res.redirect(`${frontendUrl}/auth/error`);
   }
 });
 

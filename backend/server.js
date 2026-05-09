@@ -33,13 +33,13 @@ const { QueueEvents } = require('bullmq');
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: "*" }
+  cors: { origin: process.env.FRONTEND_URL || "*" }
 });
 
 const PORT = process.env.PORT || 8080;
 
 // Middleware
-app.use(cors());
+app.use(cors({ origin: process.env.FRONTEND_URL || "*" }));
 app.use(express.json());
 
 const redisOptions = {
