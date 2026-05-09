@@ -3,7 +3,7 @@ import { Github, Shield, Cpu, Zap, ArrowRight, CheckCircle } from 'lucide-react'
 
 const Landing = () => {
   const handleLogin = () => {
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
     window.location.href = `${apiUrl}/api/auth/github`;
   };
 
