@@ -67,7 +67,7 @@ const Dashboard = () => {
     } catch (error) { 
       const errorMsg = error.response?.data?.msg || error.message || "Unknown Connection Error";
       addLog(`CONNECTION FAILED: ${errorMsg}`, "warning");
-      alert(`Import Failed: ${errorMsg}\n\nCheck if your backend is running on port 5001!`);
+      alert(`Import Failed: ${errorMsg}\n\nPlease check your Backend logs and ensure PUBLIC_URL is set in Render!`);
     }
   };
 

@@ -71,9 +71,7 @@ router.post('/import', protect, async (req, res) => {
       webhookId = hook.id.toString();
       webhookActive = true;
     } catch (hookError) {
-      console.warn(`Failed to create webhook for ${fullName}. Continuing without active webhook.`, hookError.message);
-      // We still save the repo, just without an active webhook. 
-      // The user might not have admin rights, or PUBLIC_URL is localhost (GitHub rejects localhost webhooks).
+      console.warn(`[WEBHOOK_ERROR] Failed for ${fullName}: ${hookError.message}`);
     }
 
     // Save to database
